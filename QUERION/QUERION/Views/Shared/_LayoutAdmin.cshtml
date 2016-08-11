@@ -1,0 +1,66 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    @*<meta name="viewport" content="width=device-width" />*@
+    @Styles.Render("~/Content/Admin.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        <table class="style1">
+            <tr>
+                <td class="style2">
+                    <asp:Image ID="Image1" runat="server" Height="70px"
+                               ImageUrl="~/images/Querion.jpg" Width="370px" ImageAlign="Middle" />
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom: thick groove #5C6783; text-align: left; color: #5C6783; font-weight: 700;">
+                    <asp:Button ID="Button1" runat="server" Font-Bold="True" ForeColor="#5C6783"
+                                Height="41px" PostBackUrl="~/Admin/AdminHome.aspx"
+                                style="font-size: large; text-align: center" Text="HOME" Width="99px" />
+                    &nbsp; <asp:LoginView ID="LoginView1" runat="server">
+                        <loggedintemplate>
+                            <span class="style9">Welcome </span>
+                            <asp:LoginName ID="LoginName1" runat="server" />
+                        </loggedintemplate>
+                    </asp:LoginView>
+                    &nbsp;-
+                    <asp:LoginStatus ID="LoginStatus1" runat="server"
+                                     LogoutPageUrl="~/Login.aspx" LogoutAction="RedirectToLoginPage"
+                                     LoginText="LOGIN" LogoutText="LOGOUT" style="color: #A1B1CA" />
+                    &nbsp;-
+                    <asp:HyperLink ID="HyperLink1" runat="server"
+                                   NavigateUrl="~/ChangePassword.aspx" style="color: #A1B1CA">CHANGE YOUR PASSWORD</asp:HyperLink>
+                </td>
+            </tr>
+            <tr>
+                <td class="style3" style="text-align: left; vertical-align: top">
+                    @RenderSection("featured", required: false)
+                    <section class="content-wrapper main-content clear-fix">
+                        @RenderBody()
+                    </section>
+                </td>
+            </tr>
+            <tr>
+                <td class="style8"
+                    style="border-top-style: groove; border-top-width: thick; border-color: #5C6783">
+                    <span class="style6">© Copyright - MoreMargin Solutions -- Email: </span>
+                    <a href="mailto:querion.info@moremarginsolutions.com">
+                        <span class="style7">
+                            querion.info@moremarginsolutions.com
+                        </span>
+                    </a><span class="style6">
+                        -- Tel:
+                        07935851952 -- Address: 21 Talbot Road, Luton, Bedfordshire, LU2 7RN
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

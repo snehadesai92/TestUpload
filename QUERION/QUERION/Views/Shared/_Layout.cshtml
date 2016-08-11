@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+        @*<meta name="viewport" content="width=device-width" />*@
+        @Styles.Render("~/Content/login.css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+<body>
+    <div>
+        <table class="style1">
+            <tr>
+                <td class="style4">
+                    <img  height="78px"  src="~/images/Querion.jpg" width="434px" />
+                </td>
+                <td class="style2">
+                    <strong>REVIEW - IDENTIFY - EXPORT - ACTION</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="style3" colspan="2"
+                    style="border-width: thick; vertical-align: top; text-align: center; border-top-style: groove; border-top-color: #5C6783;">
+
+                    <div id="body">
+                        @RenderSection("featured", required: false)
+                        <section class="content-wrapper main-content clear-fix">
+                            @RenderBody()
+                        </section>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"
+                    style="border-top-style: groove; border-width: thick; border-color: #5C6783">
+                    <p>
+                        <span class="style6">© Copyright - MoreMargin Solutions -- Email: </span>
+                        <a href="mailto:querion.info@moremarginsolutions.com">
+                            <span class="style7">
+                                querion.info@moremarginsolutions.com
+                            </span>
+                        </a><span class="style6">
+                            -- Tel:
+                            07935851952 -- Address: 21 Talbot Road, Luton, Bedfordshire, LU2 7RN
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

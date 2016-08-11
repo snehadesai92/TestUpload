@@ -1,0 +1,117 @@
+﻿@model QUERION.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="center-block" style="width: 100%">
+    @using (Html.BeginForm("Login", "Login", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        if (HttpContext.Current.Session["LOGIN_FAILED"] != null)
+        {
+            <div class="form-group">
+                <div>
+                    <center style="color: rgba(255, 0, 0, 0.74); font-size: 15px;">
+                        <div class="alert alert-danger" role="alert">
+                            @Session["LOGIN_FAILED"].ToString()
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+            Session["LOGIN_FAILED"] = null;
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "UserName" })
+                </div>
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="">
+                <input type="submit" value="Log in" class="btn btn-primary btn-block" />
+            </div>
+        </div>
+        /*Enable this once you have account confirmation enabled for password reset functionality*/
+        <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+        </p>
+    }
+</div>
+
+@*@using (Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <br />
+        <table style="color: #626A81;">
+            <tr>
+                <td colspan="2">
+                    Log In
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.UserName) </td>
+                <td>
+                    @Html.TextBoxFor(m => m.UserName)</td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.UserName)</td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.Password)</td>
+                <td>
+                    @Html.PasswordFor(m => m.Password)</td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password)</td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Log in" />
+                </td>
+            </tr>
+        </table>
+
+    }*@
+
+
+
+
+
+
+ 
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
